@@ -28,6 +28,7 @@
     <section id="inputResponseScreen">
         <div id="responseHeader">
             <img src="images/3.png" alt="SayWhat?" id="responseLogo">
+            <button type="button" id="exitButton" aria-label="Return Home"><b>x</b></button>
         </div>
         <div id="enteredPhrase">
             <span id="responseLabel">INVESTIGATING</span>
@@ -44,9 +45,28 @@
             </div>
             <div id="resultsHeader">
                 <h3>Check out what we came up with:</h3>
-                <p id="resultText">
-                    EXPLANATION
+                <p id="resultDefinition">
                 </p>
+            </div>
+            <div id="resultsDetails">
+                <div id="tone">
+                    <span class="toneLabel">TONE & INTENT</span>
+                    <div id="toneTags"></div>
+                </div>
+                <div id="resultExample">
+                    <span class="exampleLabel">IN CONVERSATION</span>
+                    <div id="exampleBox">
+                        <p id="exampleText"></p>
+                    </div>
+                </div>
+            </div>
+            <div id="unknownResults">
+                <h3>Hm... Looks like we don't recognize this one <i>yet</i>.</h3>
+                <p>We're still learning! Give us some time to do some more sleuthing.</p>
+            </div>
+            <div id="nextSteps">
+                <button type="button" id="newButton">Explore a new phrase →</button>
+                <button type="button" id="saveButton">♡ Save this phrase</button>
             </div>
 
         </div>

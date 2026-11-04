@@ -1,5 +1,9 @@
 const textForm = document.getElementById("textForm");
 const promptStart = document.getElementById("promptStart");
+const saveButton = document.getElementById("saveButton");
+const inputHeading = document.getElementById("inputHeading");
+const exitButton = document.getElementById("exitButton");
+const recognized = false;
 
 textForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -8,6 +12,15 @@ textForm.addEventListener("submit", function(event) {
 
     if (userInput === "") {
         return;
+    }
+
+    if (recognized) {
+        document.body.classList.remove("unrecognized");
+        saveButton.textContent = "♡ Save this phrase";
+    }
+    else {
+        document.body.classList.add("unrecognized");
+        saveButton.textContent = "+ Suggest this phrase";
     }
 
     inputHeading.textContent = userInput;
@@ -28,9 +41,19 @@ textForm.addEventListener("submit", function(event) {
         }, 350);
         
     }, 3000);
+});
 
-    exitResponse.addEventListener("click", function() {
+exitButton.addEventListener("click", function() {
         document.body.classList.remove("response-active");
         document.body.classList.remove("results-active");
+        document.body.classList.remove("loading-finish");
+        document.body.classList.remove("unrecognized");
+
+        const responseLabel = document.getElementById("responseLabel");
+
+        responseLabel.textContent = "INVESTIGATING";
+        responseLabel.style.opacity = "1";
+        responseLabel.classList.remove("label-pop");
+
+        promptStart.value = "";
     });
-});
