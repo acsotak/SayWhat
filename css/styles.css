@@ -1,0 +1,252 @@
+
+body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #FAFBFB;
+    background-color: #263f43;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+button {
+    font-weight: 600;
+}
+
+p {
+    font-weight: 400;
+}
+
+#headerBanner {
+    width: 100%;
+    background-color: #FAFBFB;
+    color: #263f43;
+    height: 40vh;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+
+}
+
+#logo {
+    display: block;
+    width: 220px;
+    max-width: 80%;
+    height: auto;
+    margin: 0;
+    border-right: 1px solid #263f43;
+    padding-right: 5%;
+}
+
+#headerSub {
+    text-align: left;
+    font-size: 30px;
+    margin: 0;
+    padding-left: 2%;
+}
+
+#bio {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 5%;
+}
+
+#textForm {
+    width: 100%;
+}
+
+#textEntry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#textBox {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 60%;
+    border-radius: 15px;
+    margin: 5% auto 0;
+}
+
+.mainTextBox {
+    width: 100%;
+    height: 70px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    padding: 0 75px 0 25px;
+    background-color: #FAFBFB;
+    border: none;
+    font-size: 25px;
+}
+
+.submitButton {
+    position: absolute;
+    right: 12px;
+    top: 47%;
+    transform: translateY(-50%);
+    color: #263f43;
+    font-size: 40px;
+    cursor: pointer;
+    border: none;
+    background-color: #FAFBFB;
+}
+
+#inputResponseScreen {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #FAFBFB;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    box-sizing: border-box;
+    transition: transform 0.6s ease;
+}
+
+#enteredPhrase {
+    width: 80%;
+    max-width: 800px;
+    margin-top: 50px;
+}
+
+#responseLabel {
+    display: block;
+    color: #668f91;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+    transition: opacity 0.4s ease;
+}
+
+#inputHeading {
+    color: #263f43;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+}
+
+#responseHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 30px;
+    box-sizing: border-box;
+}
+
+#thinkingTransitionScreen {
+    color: #668f91;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s linear 0s;
+}
+
+#responseLogo {
+    width: 100px;
+    height: auto;
+}
+
+#thinkingDots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#thinkingDots span {
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #668f91;
+    border-radius: 50%;
+    animation-name: dotBounce; 
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    transition: transform 0.4s ease;
+}
+
+.one {
+    animation-delay: 0s;
+}
+
+.two {
+    animation-delay: 0.2s;
+}
+
+.three {
+    animation-delay: 0.4s;
+}
+
+@keyframes dotBounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+#resultsHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px); 
+    transition: opacity 1.3s ease, transform 1.3s ease, visibility 0s linear 1.3s;
+}
+
+body.results-active #thinkingTransitionScreen {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s linear 0.8s;
+}
+
+body.results-active #resultsHeader {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.8s ease, visibility 0s linear 0s;
+}
+
+body.response-active #inputResponseScreen {
+    transform: translateY(-100%);
+}
+
+body.loading-finish #thinkingDots span {
+    animation: none;
+    transform: translateY(0);
+}
+
+@keyframes labelReveal {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.label-pop {
+    animation: labelReveal 2s ease-in forwards;
+}
