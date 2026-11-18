@@ -228,12 +228,18 @@ p {
     box-sizing: border-box;
 }
 
-#resultsHeader {
-    width: 100%;
+#resultsHeader,
+#resultsDetails,
+#unknownResults,
+#nextSteps {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px); 
-    transition: opacity 1.3s ease, transform 1.3s ease, visibility 0s linear 1.3s;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+#resultsHeader {
+    width: 100%;
 }
 
 #resultsDetails {
@@ -353,18 +359,21 @@ body.unrecognized #resultsHeader, body.unrecognized #resultsDetails {
     color: #FAFBFB;
     transform: translateY(-2px);
 }
-body.results-active #thinkingTransitionScreen {
+body.loading-finish #thinkingTransitionScreen {
     opacity: 0;
     visibility: hidden;
     transform: translateY(25px);
     transition: opacity 0.8s ease, transform 0.8s ease, visibility 0s linear 0.8s;
 }
 
-body.results-active #resultsHeader {
+body.results-active #resultsHeader,
+body.results-active #resultsDetails,
+body.results-active #unknownResults,
+body.results-active #nextSteps {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    transition: opacity 0.8s ease, visibility 0s linear 0s;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 body.response-active #inputResponseScreen {

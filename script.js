@@ -3,7 +3,7 @@ const promptStart = document.getElementById("promptStart");
 const saveButton = document.getElementById("saveButton");
 const inputHeading = document.getElementById("inputHeading");
 const exitButton = document.getElementById("exitButton");
-const recognized = false;
+const recognized = true;
 
 textForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -17,7 +17,22 @@ textForm.addEventListener("submit", function(event) {
     if (recognized) {
         document.body.classList.remove("unrecognized");
         saveButton.textContent = "♡ Save this phrase";
+
+        document.getElementById("resultDefinition").textContent = 
+        `A Southern American idiom that has two meanings depending on context:
+
+        An offer of sympathy for someone facing a difficult time, or a backhanded
+        compliment used to imply someone is acting naive.`;
+
+        document.getElementById("toneTags").innerHTML =
+        "<span>Affectionate</span>" +
+        "<span>Condescending</span>";
+
+        document.getElementById("exampleText").textContent =
+        `Positive: "You lost your job? Bless your heart."
+        Negative: "Oh, you tried fixing the printer with the paper still jammed inside? Bless your heart."`;
     }
+
     else {
         document.body.classList.add("unrecognized");
         saveButton.textContent = "+ Suggest this phrase";
@@ -38,7 +53,7 @@ textForm.addEventListener("submit", function(event) {
             responseLabel.classList.add("label-pop");
 
             document.body.classList.add("results-active");
-        }, 350);
+        }, 800);
         
     }, 3000);
 });
