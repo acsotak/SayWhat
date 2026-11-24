@@ -3,7 +3,6 @@ const promptStart = document.getElementById("promptStart");
 const saveButton = document.getElementById("saveButton");
 const inputHeading = document.getElementById("inputHeading");
 const exitButton = document.getElementById("exitButton");
-const recognized = true;
 
 textForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -14,6 +13,7 @@ textForm.addEventListener("submit", function(event) {
         return;
     }
 
+    const recognized = userInput.toLowerCase().includes("bless your heart");
     if (recognized) {
         document.body.classList.remove("unrecognized");
         saveButton.textContent = "♡ Save this phrase";
