@@ -15,7 +15,7 @@ Amanda Sotak
 ## Prerequisites
 - Web browser
 - Git (for cloning)
-No additional dependencies
+- No additional dependencies
 
 ## Installation
 - Clone the repository:
