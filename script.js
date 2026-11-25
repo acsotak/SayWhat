@@ -4,12 +4,34 @@ const saveButton = document.getElementById("saveButton");
 const inputHeading = document.getElementById("inputHeading");
 const exitButton = document.getElementById("exitButton");
 
-textForm.addEventListener("submit", function(event) {
+textForm.addEventListener("submit", async function(event) {
     event.preventDefault();
 
     const userInput = promptStart.value.trim();
 
     if (userInput === "") {
+        return;
+    }
+
+    try {
+        const response = await fetch("/analyze", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ text: userInput })
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        console.log("Backend response:", data);
+
+    } catch (error) {
+        console.error("Backend request failed:", error);
         return;
     }
 
