@@ -1,0 +1,24 @@
+{
+    "bless your heart": {
+        "type": "idiom",
+        "origin": "Southern American English",
+        "interpretations": [
+            {
+                "id": "sympathy",
+                "meaning": "An expression of sympathy or affection.",
+                "example": "You lost your job? Bless your heart."
+            },
+            {
+                "id": "condescension",
+                "meaning": "An expression of condescension or patronizing criticism",
+                "example": "You tried fixing the printer without unplugging it? Bless your heart."
+            }
+        ],
+        "context_dimensions": [
+            "delivery",
+            "situational",
+            "interpersonal"
+        ]
+    }
+}
+

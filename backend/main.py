@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
+from backend.dictionary import recognize_expression, get_expression
 
 app = FastAPI()
 
@@ -24,4 +25,17 @@ def javascript():
 
 @app.post("/analyze")
 def analyze(request: AnalyzeRequest):
-    return {"text": request.text}
+    expression = recognize_expression(request.text)
+
+    if expression is None:
+        return {
+            "recognized": False,
+            "text": request.text
+        }
+
+    return {
+        "recognized": True,
+        "text": request.text,
+        "expression": expression,
+        "details": get_expression(expression)
+    }
