@@ -1,5 +1,5 @@
 from backend.dictionary import recognize_expression, get_expression
-from backend.preprocessing import mask_expression, identify_speaker, extract_speaker_delivery
+from backend.preprocessing import mask_expression, identify_speaker, extract_speaker_delivery, extract_timing_context, extract_social_context, extract_user_comprehension
 from backend.nli import classify_evidence
 
 def reconcile_evidence(generic_label, specific_label):
@@ -63,6 +63,12 @@ def analyze_text(text):
 
     extracted_delivery = extract_speaker_delivery(masked_text)
 
+    extracted_timing = extract_timing_context(text)
+
+    extracted_social = extract_social_context(speaker)
+
+    extracted_comprehension = extract_user_comprehension(text)
+
     delivery_characteristics = [
         "mocking", "sarcastic", "sincere",
         "affectionate", "condescending"
@@ -94,5 +100,7 @@ def analyze_text(text):
         "recognized": True, "text": text, "expression": expression,
         "details": linguistic_details, "masked_text": masked_text,
         "speaker": speaker, "delivery evidence": delivery_evidence,
-        "explicit delivery": extracted_delivery
+        "explicit delivery": extracted_delivery, 
+        "timing context": extracted_timing, "relational context": extracted_social,
+        "user comprehension": extracted_comprehension
     }
